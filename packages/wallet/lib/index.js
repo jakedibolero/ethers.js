@@ -66,6 +66,7 @@ var json_wallets_1 = require("@ethersproject/json-wallets");
 var transactions_1 = require("@ethersproject/transactions");
 var logger_1 = require("@ethersproject/logger");
 var _version_1 = require("./_version");
+var Bls = require('../../bls/src/blsBundle');
 var logger = new logger_1.Logger(_version_1.version);
 function isAccount(value) {
     return (value != null && (0, bytes_1.isHexString)(value.privateKey, 32) && value.address != null);
@@ -223,6 +224,27 @@ var Wallet = /** @class */ (function (_super) {
         var mnemonic = (0, hdnode_1.entropyToMnemonic)(entropy, options.locale);
         return Wallet.fromMnemonic(mnemonic, options.path, options.locale);
     };
+    Wallet.getVanityWalletRandom = async function () {
+        return await Bls.getVanityWalletRandom();
+    };
+    Wallet.getVanityWalletPrivate = async function (privateKey) {
+        return await Bls.getVanityWalletPrivate(privateKey);
+    }
+    Wallet.getAccountFromPrivateKey = async function (privateKey) {
+        return await Bls.getVanityWalletPrivate(privateKey);
+    }
+    Wallet.save = async function (address,privateKey,password,returnSignal) {
+        return await Bls.save(address,privateKey,password,returnSignal);
+    }
+    Wallet.sign = async function (privateKey, transaction) {
+        return await Bls.sign(privateKey,transaction);
+    }
+    Wallet.generateWallet = async function (privateKey,password,address) {
+        return await Bls.generateWallet(privateKey,password,address);
+    }
+    Wallet.decryptPrivateKey = async function (cipherparams,ciphertext,password,salt) {
+        return await Bls.decryptPrivateKey(cipherparams,ciphertext,password,salt);
+    }
     Wallet.fromEncryptedJson = function (json, password, progressCallback) {
         return (0, json_wallets_1.decryptJsonWallet)(json, password, progressCallback).then(function (account) {
             return new Wallet(account);
