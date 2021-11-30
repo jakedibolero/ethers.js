@@ -1,5 +1,5 @@
 {
-  "name": "@jakediboler/ethers",
+  "name": "@jakedibolero/ethers",
   "version":"0.1.0",
   "common": {
     "ethereum": "donations.ethers.eth",
@@ -14,7 +14,6 @@
       }
     ]
   },
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/ethers-io/ethers.js.git"
