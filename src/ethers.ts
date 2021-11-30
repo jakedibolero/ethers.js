@@ -18,7 +18,7 @@ import { getDefaultProvider } from '@ethersproject/providers';
 
 import { Wordlist, wordlists } from '@ethersproject/wordlists';
 
-import * as utils from './utils.mjs';
+import * as utils from './utils';
 
 import { ErrorCode as errors, Logger } from '@ethersproject/logger';
 

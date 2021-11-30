@@ -2,10 +2,10 @@
 
 // To modify this file, you must update ./misc/admin/lib/cmds/update-exports.js
 
-import * as ethers from './ethers.mjs';
+import * as ethers from './ethers';
 
 try {
-  const anyGlobal = window;
+  const anyGlobal = window as any;
 
   if (anyGlobal._ethers == null) {
     anyGlobal._ethers = ethers;
@@ -54,4 +54,4 @@ export {
   Transaction,
   UnsignedTransaction,
   Wordlist,
-} from './ethers.mjs';
+} from './ethers';
