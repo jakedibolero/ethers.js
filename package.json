@@ -1,6 +1,6 @@
 {
   "name": "@jakedibolero/ethers",
-  "version":"0.1.0",
+  "version":"0.1.1",
   "common": {
     "ethereum": "donations.ethers.eth",
     "funding": [
